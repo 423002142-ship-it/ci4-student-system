@@ -6,21 +6,26 @@ use App\Models\StudentModel;
 
 class StudentController extends BaseController
 {
-   public function index()
+public function index()
 {
     $model = new StudentModel();
 
     $keyword = $this->request->getGet('search');
 
     if ($keyword) {
-        $data['students'] = $model
+        $students = $model
             ->like('name', $keyword)
             ->orLike('email', $keyword)
             ->orLike('course', $keyword)
-            ->findAll();
+            ->paginate(5);
     } else {
-        $data['students'] = $model->findAll();
+        $students = $model->paginate(5);
     }
+
+    $data = [
+        'students' => $students,
+        'pager' => $model->pager
+    ];
 
     return view('students/index', $data);
 }
