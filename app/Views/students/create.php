@@ -2,24 +2,31 @@
 <html>
 <head>
     <title>Add Student</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Add Student</h1>
+<div class="container mt-5">
+    <h1 class="mb-4">Add Student</h1>
 
     <form action="/students/store" method="post">
-        <label>Name</label><br>
-        <input type="text" name="name" required><br><br>
+        <div class="mb-3">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
 
-        <label>Email</label><br>
-        <input type="email" name="email" required><br><br>
+        <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" required>
+        </div>
 
-        <label>Course</label><br>
-        <input type="text" name="course" required><br><br>
+        <div class="mb-3">
+            <label class="form-label">Course</label>
+            <input type="text" name="course" class="form-control" required>
+        </div>
 
-        <button type="submit">Save</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+        <a href="/students" class="btn btn-secondary">Back</a>
     </form>
-
-    <br>
-    <a href="/students">Back</a>
+</div>
 </body>
 </html>
