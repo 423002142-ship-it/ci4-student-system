@@ -6,13 +6,24 @@ use App\Models\StudentModel;
 
 class StudentController extends BaseController
 {
-    public function index()
-    {
-        $model = new StudentModel();
-        $data['students'] = $model->findAll();
+   public function index()
+{
+    $model = new StudentModel();
 
-        return view('students/index', $data);
+    $keyword = $this->request->getGet('search');
+
+    if ($keyword) {
+        $data['students'] = $model
+            ->like('name', $keyword)
+            ->orLike('email', $keyword)
+            ->orLike('course', $keyword)
+            ->findAll();
+    } else {
+        $data['students'] = $model->findAll();
     }
+
+    return view('students/index', $data);
+}
 
     public function create()
     {

@@ -16,7 +16,12 @@
             <th>Course</th>
             <th>Action</th>
         </tr>
+        <form method="get" action="/students">
+    <input type="text" name="search" placeholder="Search...">
+    <button type="submit">Search</button>
+</form>
 
+<br>
         <?php foreach ($students as $student): ?>
         <tr>
             <td><?= $student['id'] ?></td>
