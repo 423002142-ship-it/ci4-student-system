@@ -76,4 +76,11 @@ public function index()
 
         return redirect()->to('/students');
     }
+    public function api()
+{
+    $model = new StudentModel();
+    $data = $model->findAll();
+
+    return $this->response->setJSON($data);
+}
 }
